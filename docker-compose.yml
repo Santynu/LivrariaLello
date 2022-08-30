@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  livraria-lello-app:
+    build:
+      context: .
+      target: livraria-lello
+    ports:
+      - 8081:8080
