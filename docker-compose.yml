@@ -6,4 +6,4 @@ services:
       context: .
       target: livraria-lello
     ports:
-      - 80:80
+      - 8080:8080
