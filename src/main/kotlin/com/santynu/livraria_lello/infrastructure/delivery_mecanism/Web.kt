@@ -6,7 +6,7 @@ import spark.Spark.port
 
 object Web {
     fun start() {
-        port(8080)
+        port(80)
         registerRoutes()
     }
 
