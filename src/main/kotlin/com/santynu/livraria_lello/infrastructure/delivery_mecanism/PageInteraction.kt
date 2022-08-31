@@ -8,9 +8,7 @@ class PageInteraction<K> internal constructor(
     }
 
     companion object {
-        fun <K> aPageInteraction(
-            response: K
-        ): PageInteraction<K> {
+        fun <K> aPageInteraction(response: K, ): PageInteraction<K> {
             return PageInteraction(response)
         }
     }
