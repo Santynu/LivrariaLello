@@ -14,7 +14,6 @@ RUN ./gradlew shadowJar
 FROM openjdk:11.0.7-jre-slim AS livraria-lello
 
 WORKDIR /app
-COPY key.jks .
 COPY --from=build /app/build/libs/livrariaLello.jar .
 
 CMD ["java", "-cp", "livrariaLello.jar", "com.santynu.livraria_lello.AppKt"]
