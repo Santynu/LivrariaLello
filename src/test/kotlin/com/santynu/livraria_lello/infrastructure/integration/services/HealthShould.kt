@@ -1,11 +1,8 @@
 package com.santynu.livraria_lello.infrastructure.integration.services
 
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.Web
 import io.github.rybalkinsd.kohttp.dsl.httpGet
 import org.assertj.core.api.Assertions.assertThat
-import org.eclipse.jetty.http.HttpStatus
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
