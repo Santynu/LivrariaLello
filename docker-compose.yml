@@ -9,3 +9,11 @@ services:
       - 8081:8080
     env_file:
       - docker.env
+
+  livraria-lello-mysql:
+    build:
+      context: docker/mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
