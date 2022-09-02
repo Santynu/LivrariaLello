@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 class ConfigShould {
     @Test
-    fun xxx() {
+    fun checkPort() {
         assertThat(PORT).isEqualTo(System.getenv("PORT").toInt())
     }
 }

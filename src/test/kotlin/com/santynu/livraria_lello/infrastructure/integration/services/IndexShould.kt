@@ -35,20 +35,31 @@ class IndexShould {
         val content = httpGet { url("http://localhost:8080/") }
 
         assertThat(content.code()).isEqualTo(OK_200)
-        assertThat(content.body()?.string()).contains("Hello world!")
    }
+
+
+    @Test
+    fun haveHeadElements() {
+        val content = httpGet { url("http://localhost:8080/") }
+        val body = content.body()?.string()
+
+        assertThat(body).contains("<link rel=\"icon\" href=\"/assets/images/deathly_hallows_sign_black.svg\" type=\"image/x-icon\">")
+        assertThat(body).contains("<title>Livraria Lello</title>")
+
+    }
+
+
+
 
     @Test
     fun showNavbar() {
         val content = httpGet { url("http://localhost:8080/") }
         val body = content.body()?.string()
 
-        assertThat(content.code()).isEqualTo(OK_200)
         assertThat(body).contains("<nav>")
         assertThat(body).contains("</nav>")
-        assertThat(body).contains("<img src=\"/assets/images/deathly_hallows_sign.svg\" alt=\"deathly_hallows_sign\">")
+        assertThat(body).contains("<img src=\"/assets/images/deathly_hallows_sign_white.svg\" alt=\"deathly_hallows_sign\">")
         assertThat(body).contains("<span>Livraria Lello</span>")
-
     }
 
 
