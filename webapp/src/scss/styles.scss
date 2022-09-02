@@ -1,3 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+@function pxToRem($px) {
+  $rem: $px / 16;
+  @return #{$rem}rem;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(2,0,36);
+    background: -moz-linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(50,50,50,1) 83%, rgba(71,71,71,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(50,50,50,1) 83%, rgba(71,71,71,1) 100%);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(50,50,50,1) 83%, rgba(71,71,71,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#474747",GradientType=1);
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+
+      img {
+        width: pxToRem(60);
+        height: pxToRem(60);
+      }
+
+      span {
+        color: #FFF;
+        font-size: pxToRem(30);
+        margin-left: pxToRem(15);
+      }
+    }
+
+  }
+}
+
+
 h1 {
   color: red;
 }
