@@ -7,7 +7,7 @@ import org.sql2o.Sql2o
 
 class BooksRepositoryMySQL : BooksRepository{
     override fun retrieveAll(): List<Book> {
-        return Sql2o(Config.MSQL_JDBC_CONNECTOR, Config.MYSQL_USER, Config.MYSQL_PASSWORD).open().use { connection ->
+        return createConnector().use { connection ->
             connection.createQuery("""SELECT * FROM books""")
                 .executeAndFetchTable()
                 .rows().map {row ->
@@ -21,4 +21,12 @@ class BooksRepositoryMySQL : BooksRepository{
                }
         }
     }
+
+    override fun deleteOneForISBN13(isbn13: String) {
+        createConnector().use { connection ->
+            connection.createQuery("""DELETE FROM books WHERE isbn_13= '$isbn13'""").executeUpdate()
+        }
+    }
+
+    private fun createConnector() = Sql2o(Config.MSQL_JDBC_CONNECTOR, Config.MYSQL_USER, Config.MYSQL_PASSWORD).open()
 }
