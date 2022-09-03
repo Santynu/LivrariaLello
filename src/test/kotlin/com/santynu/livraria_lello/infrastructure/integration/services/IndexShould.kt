@@ -37,7 +37,6 @@ class IndexShould {
         assertThat(content.code()).isEqualTo(OK_200)
    }
 
-
     @Test
     fun haveHeadElements() {
         val content = httpGet { url("http://localhost:8080/") }
@@ -47,9 +46,6 @@ class IndexShould {
         assertThat(body).contains("<title>Livraria Lello</title>")
 
     }
-
-
-
 
     @Test
     fun showNavbar() {

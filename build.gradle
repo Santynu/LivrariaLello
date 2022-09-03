@@ -16,7 +16,9 @@ dependencies {
     implementation("io.github.rybalkinsd:kohttp:0.11.1")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("org.freemarker:freemarker:2.3.31")
-    implementation ("com.sparkjava:spark-template-freemarker:2.7.1")
+    implementation("com.sparkjava:spark-template-freemarker:2.7.1")
+    implementation("org.sql2o:sql2o:1.6.0")
+    implementation("mysql:mysql-connector-java:8.0.21")
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.2")
