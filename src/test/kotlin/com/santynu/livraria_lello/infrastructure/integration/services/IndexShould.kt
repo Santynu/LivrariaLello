@@ -57,6 +57,19 @@ class IndexShould {
         assertThat(body).contains("<img src=\"/assets/images/deathly_hallows_sign_white.svg\" alt=\"deathly_hallows_sign\">")
         assertThat(body).contains("<span>Livraria Lello</span>")
     }
+    @Test
+    fun showTableWithElements() {
+        val content = httpGet { url("http://localhost:8080/") }
+        val body = content.body()?.string()
+
+        assertThat(body).contains("<div class=\"books_table\">")
+        assertThat(body).contains("<div class=\"book_row\">")
+        assertThat(body).contains("<div class=\"book_cell isbn13\">")
+        assertThat(body).contains("<div class=\"book_cell isbn10\">")
+        assertThat(body).contains("<div class=\"book_cell tittle\">")
+        assertThat(body).contains("<div class=\"book_cell author\">")
+        assertThat(body).contains("<div class=\"book_cell editorial\">")
+    }
 
 
 }

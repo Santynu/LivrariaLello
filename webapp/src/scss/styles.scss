@@ -36,7 +36,35 @@ body {
         margin-left: pxToRem(15);
       }
     }
+  }
 
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: pxToRem(30);
+
+    .books_table {
+      display: table;
+      border-style: solid;
+
+      .book_row {
+        display:table-row;
+        width:auto;
+      }
+
+      .book_cell {
+        float:left;/*fix for  buggy browsers*/
+        display:table-column;
+        padding: pxToRem(6) pxToRem(10);
+      }
+
+      .tittle {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(500);
+      }
+    }
   }
 }
 
