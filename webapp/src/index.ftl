@@ -14,6 +14,13 @@
     </nav>
     <div class="container">
         <div class="books_table">
+            <div class="book_row">
+                <div class="book_cell isbn13">ISBN 13</div>
+                <div class="book_cell isbn10">ISBN 10</div>
+                <div class="book_cell tittle">Titulo</div>
+                <div class="book_cell author">Autor</div>
+                <div class="book_cell editorial">Editorial</div>
+            </div>
             <#list getBooksList() as book>
                 <div class="book_row">
                     <div class="book_cell isbn13">${book.isbn13}</div>

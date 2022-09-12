@@ -71,6 +71,19 @@ class IndexShould {
         assertThat(body).contains("<div class=\"book_cell editorial\">")
     }
 
+    @Test
+    fun showTableHeader() {
+        val content = httpGet { url("http://localhost:8080/") }
+        val body = content.body()?.string()
+
+        assertThat(body).contains("<div class=\"book_cell isbn13\">ISBN 13</div>")
+        assertThat(body).contains("<div class=\"book_cell isbn10\">ISBN 10</div>")
+        assertThat(body).contains("<div class=\"book_cell tittle\">Titulo</div>")
+        assertThat(body).contains("<div class=\"book_cell author\">Autor</div>")
+        assertThat(body).contains("<div class=\"book_cell editorial\">Editorial</div>")
+    }
+
+
 
 }
 

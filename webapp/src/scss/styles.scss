@@ -59,10 +59,34 @@ body {
         padding: pxToRem(6) pxToRem(10);
       }
 
+      .isbn13 {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(120);
+      }
+
+      .isbn10 {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(100);
+      }
+
       .tittle {
         display: flex;
         justify-content: center;
         width: pxToRem(500);
+      }
+
+      .author {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(120);
+      }
+
+      .editorial {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(120);
       }
     }
   }
