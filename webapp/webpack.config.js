@@ -18,7 +18,7 @@ pageTemplate = (options) => {
 const config = {
   mode: 'development',
   entry: {
-    index: './src/index.ts',
+    index: './src/ts/index.ts',
     styles: './src/scss/styles.scss'
   },
   output: {

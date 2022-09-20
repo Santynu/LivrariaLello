@@ -5,6 +5,7 @@ import com.santynu.livraria_lello.infrastructure.Config.isLocal
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.PageInteraction.Companion.aPageInteraction
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.http.get
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.template_engine.CustomFreeMarkerEngine.templateEngine
+import com.santynu.livraria_lello.infrastructure.repository.BooksRepositoryMySQL
 import com.santynu.livraria_lello.view.ViewData
 import spark.ModelAndView
 import spark.Spark
@@ -27,6 +28,12 @@ object Web {
                 throw Exception(e)
             }
         }
+
+        get(path = "/delete/:id") {requestContext, _ ->
+            BooksRepositoryMySQL().deleteOneForISBN13(requestContext.params("id"))
+            aPageInteraction("OK")
+        }
+
         get(path = "/health") { _, _ -> aPageInteraction("OK") }
     }
 
