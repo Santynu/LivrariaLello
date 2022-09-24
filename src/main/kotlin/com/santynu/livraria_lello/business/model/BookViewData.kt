@@ -1,6 +1,6 @@
 package com.santynu.livraria_lello.business.model
 
-data class Book(
+data class BookViewData(
     val isbn13: String,
     val isbn10: String,
     val title: String,

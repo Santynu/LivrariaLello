@@ -1,6 +1,6 @@
 package com.santynu.livraria_lello.infrastructure.integration.dao
 
-import com.santynu.livraria_lello.business.model.Book
+import com.santynu.livraria_lello.business.model.BookViewData
 import com.santynu.livraria_lello.infrastructure.Config
 import com.santynu.livraria_lello.infrastructure.repository.BooksRepositoryMySQL
 import org.assertj.core.api.Assertions.assertThat
@@ -10,7 +10,7 @@ import org.sql2o.Sql2o
 class BooksRepositoryMySQLShould {
 
     companion object {
-        val exampleBook = Book(
+        val exampleBook = BookViewData(
             isbn13 = "9780439064866",
             isbn10 = "0439064864",
             title = "Harry Potter and the Chamber of Secrets",
@@ -40,8 +40,8 @@ class BooksRepositoryMySQLShould {
 
     private fun addOneBookToDatabase(isbn13: String) {
         Sql2o(Config.MSQL_JDBC_CONNECTOR, Config.MYSQL_USER, Config.MYSQL_PASSWORD).open().use { connector ->
-            connector.createQuery("""INSERT INTO books (isbn_13, isbn_10, title, author, editorial) VALUES
-                ("${isbn13}", "0000000001", "Any book", "Any author", "Any editorial")""").executeUpdate()
+            connector.createQuery("""INSERT INTO books (isbn_13, isbn_10, title, author_id, publishing_house_id) VALUES
+                ("${isbn13}", "0000000001", "Any book", 1, 1)""").executeUpdate()
         }
     }
 
