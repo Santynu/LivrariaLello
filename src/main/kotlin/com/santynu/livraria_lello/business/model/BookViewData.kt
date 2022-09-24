@@ -5,5 +5,7 @@ data class BookViewData(
     val isbn10: String,
     val title: String,
     val author: String,
-    val editorial: String
+    val authorId: Int = 0,
+    val publishingHouse: String,
+    val publishingHouseId: Int = 0
 )

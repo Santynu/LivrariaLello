@@ -16,7 +16,7 @@ class BooksRepositoryMySQL : BooksRepository{
                         isbn10 = row.getString("isbn_10"),
                         title = row.getString("title"),
                         author = row.getString("author"),
-                        editorial = row.getString("publishing_house")
+                        publishingHouse = row.getString("publishing_house")
                     )
                }
         }
@@ -28,6 +28,24 @@ class BooksRepositoryMySQL : BooksRepository{
         }
     }
 
+    override fun retrieveBookInfo(isbn13: String) : BookViewData {
+        return createConnector().use { connection ->
+            connection.createQuery(retrieveBookInfoQueryString(isbn13))
+                .executeAndFetchTable()
+                .rows().map {row ->
+                    BookViewData(
+                        isbn13 = row.getString("isbn_13"),
+                        isbn10 = row.getString("isbn_10"),
+                        title = row.getString("title"),
+                        authorId = row.getInteger("author_id"),
+                        author = row.getString("author"),
+                        publishingHouseId = row.getInteger("publishing_house_id"),
+                        publishingHouse = row.getString("publishing_house")
+                    )
+                }[0]
+        }
+    }
+
     private fun createConnector() = Sql2o(Config.MSQL_JDBC_CONNECTOR, Config.MYSQL_USER, Config.MYSQL_PASSWORD).open()
 
     private fun retrieveAllBooksQueryString() = """select
@@ -36,4 +54,13 @@ class BooksRepositoryMySQL : BooksRepository{
             books, authors, publishing_houses
         where
             books.author_id = authors.id && books.publishing_house_id = publishing_houses.id"""
+
+
+    private fun retrieveBookInfoQueryString(isbn13: String) = """select
+            books.isbn_13, books.isbn_10, books.title, authors.id as author_id, authors.name as author, publishing_houses.id as publishing_house_id, publishing_houses.name as publishing_house
+        from
+            books, authors, publishing_houses
+        where
+            books.isbn_13 = $isbn13 && books.author_id = authors.id && books.publishing_house_id = publishing_houses.id"""
+
 }

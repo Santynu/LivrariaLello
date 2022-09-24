@@ -15,7 +15,7 @@ class BooksRepositoryMySQLShould {
             isbn10 = "0439064864",
             title = "Harry Potter and the Chamber of Secrets",
             author = "J.K. Rowling",
-            editorial = "Scholastic Press"
+            publishingHouse = "Scholastic Press"
 
         )
     }
@@ -26,6 +26,21 @@ class BooksRepositoryMySQLShould {
 
         assertThat(books.size).isEqualTo(7)
         assertThat(books).contains(exampleBook)
+    }
+
+    @Test
+    fun retrieveBookInfo() {
+        val isbn13 = "9780590353403"
+
+        val bookInfo = BooksRepositoryMySQL().retrieveBookInfo(isbn13)
+
+        assertThat(bookInfo.isbn13).isEqualTo(isbn13)
+        assertThat(bookInfo.isbn10).isEqualTo("0590353403")
+        assertThat(bookInfo.title).isEqualTo("Harry Potter and the Philosopher's Stone")
+        assertThat(bookInfo.authorId).isEqualTo(1)
+        assertThat(bookInfo.author).isEqualTo("J.K. Rowling")
+        assertThat(bookInfo.publishingHouseId).isEqualTo(1)
+        assertThat(bookInfo.publishingHouse).isEqualTo("Scholastic Press")
     }
 
     @Test
