@@ -59,7 +59,8 @@ const config = {
     new MiniCssExtractPlugin({
       filename: 'main-[name].css'
     }),
-    pageTemplate({path: 'src/index.ftl', dist: '../dist/templates/index.ftl'})
+    pageTemplate({path: 'src/index.ftl', dist: '../dist/templates/index.ftl'}),
+    pageTemplate({path: 'src/components/deleteModal.ftl', dist: '../dist/templates/components/deleteModal.ftl'})
   ]
 };
 

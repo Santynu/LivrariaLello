@@ -83,6 +83,14 @@ class IndexShould {
         assertThat(body).contains("<div class=\"book_cell editorial\">Editorial</div>")
     }
 
+    @Test
+    fun exitsDeleteModal() {
+        val content = httpGet { url("http://localhost:8080/") }
+        val body = content.body()?.string()
+
+        assertThat(body).contains("<div id=\"deleteModal\" class=\"modal\">")
+    }
+
 
 
 }
