@@ -14,6 +14,7 @@
         </div>
     </nav>
     <#include "components/deleteModal.ftl">
+    <#include "components/informationBookModal.ftl">
     <div class="container">
         <div class="books_table">
             <div class="book_row">
@@ -22,7 +23,8 @@
                 <div class="book_cell tittle">Titulo</div>
                 <div class="book_cell author">Autor</div>
                 <div class="book_cell editorial">Editorial</div>
-                <div class="book_cell obliviate">Borrar libro</div>
+                <div class="book_cell obliviate">Delete book</div>
+                <div class="book_cell information">Book information</div>
             </div>
             <#list getBooksList() as book>
                 <div class="book_row">
@@ -30,8 +32,9 @@
                     <div class="book_cell isbn10">${book.isbn10}</div>
                     <div class="book_cell tittle">${book.title}</div>
                     <div class="book_cell author">${book.author}</div>
-                    <div class="book_cell editorial">${book.editorial}</div>
+                    <div class="book_cell editorial">${book.publishingHouse}</div>
                     <div data-button="obliviate" data-id="${book.isbn13}" class="book_cell obliviate clickable">Obliviate</div>
+                    <div data-button="bookInformation" data-id="${book.isbn13}" class="book_cell information clickable">Veritaserum</div>
                 </div>
             </#list>
         </div>

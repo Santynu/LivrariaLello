@@ -28,6 +28,20 @@ body {
       border: 1px solid #888;
       width: 30%;
 
+      .information {
+        .line {
+          p {
+            margin: 0;
+          }
+          display: flex;
+          .preposition {
+            display: flex;
+            justify-content: center;
+            width: pxToRem(90);
+          }
+        }
+
+      }
       .buttons {
         display: flex;
         justify-content: center;
@@ -126,7 +140,7 @@ body {
       .tittle {
         display: flex;
         justify-content: center;
-        width: pxToRem(500);
+        width: pxToRem(400);
       }
 
       .author {
@@ -141,7 +155,15 @@ body {
         width: pxToRem(120);
       }
 
-      .obliviate_button {
+      .information {
+        display: flex;
+        justify-content: center;
+        width: pxToRem(160);
+      }
+
+      .obliviate {
+        display: flex;
+        justify-content: center;
         width: pxToRem(100);
       }
 
@@ -151,10 +173,5 @@ body {
       }
     }
   }
-}
-
-
-h1 {
-  color: red;
 }
 

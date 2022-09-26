@@ -1,16 +1,17 @@
 package com.santynu.livraria_lello.infrastructure.delivery_mecanism
 
+import com.google.gson.JsonObject
 import com.santynu.livraria_lello.infrastructure.Config.PORT
 import com.santynu.livraria_lello.infrastructure.Config.isLocal
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.PageInteraction.Companion.aPageInteraction
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.http.get
+import com.santynu.livraria_lello.infrastructure.delivery_mecanism.http.getJson
 import com.santynu.livraria_lello.infrastructure.delivery_mecanism.template_engine.CustomFreeMarkerEngine.templateEngine
 import com.santynu.livraria_lello.infrastructure.repository.BooksRepositoryMySQL
 import com.santynu.livraria_lello.view.ViewData
 import spark.ModelAndView
 import spark.Spark
 import spark.Spark.port
-import spark.Spark.secure
 import spark.TemplateEngine
 
 object Web {
@@ -32,6 +33,11 @@ object Web {
         get(path = "/delete/:id") {requestContext, _ ->
             BooksRepositoryMySQL().deleteOneForISBN13(requestContext.params("id"))
             aPageInteraction("OK")
+        }
+
+        getJson(path = "/:id") {requestContext, response ->
+            val bookViewData = BooksRepositoryMySQL().retrieveBookInfo(requestContext.params("id"))
+            aPageInteraction(bookViewData.toJson())
         }
 
         get(path = "/health") { _, _ -> aPageInteraction("OK") }

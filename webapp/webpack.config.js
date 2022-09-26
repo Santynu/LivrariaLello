@@ -60,7 +60,8 @@ const config = {
       filename: 'main-[name].css'
     }),
     pageTemplate({path: 'src/index.ftl', dist: '../dist/templates/index.ftl'}),
-    pageTemplate({path: 'src/components/deleteModal.ftl', dist: '../dist/templates/components/deleteModal.ftl'})
+    pageTemplate({path: 'src/components/deleteModal.ftl', dist: '../dist/templates/components/deleteModal.ftl'}),
+    pageTemplate({path: 'src/components/informationBookModal.ftl', dist: '../dist/templates/components/informationBookModal.ftl'})
   ]
 };
 
